@@ -1,33 +1,33 @@
 [
     {
-      "CIF": "A12345678",
-      "Nombre": "Kawasaki",
-      "Localidad": "Japon",
-      "Telefono": "124567890"
+      "cif": "A12345678",
+      "nombre": "Kawasaki",
+      "localidad": "Japon",
+      "telefono": "124567890"
     },
     {
-      "CIF": "B98765432",
-      "Nombre": "Yamaha",
-      "Localidad": "Jspon",
-      "Telefono": "987654210"
+      "cif": "B98765432",
+      "nombre": "Yamaha",
+      "localidad": "Jspon",
+      "telefono": "987654210"
     },
     {
-      "CIF": "C87654321",
-      "Nombre": "Honda",
-      "Localidad": "Japon",
-      "Telefono": "555234567"
+      "cif": "C87654321",
+      "nombre": "Honda",
+      "localidad": "Japon",
+      "telefono": "555234567"
     },
     {
-      "CIF": "D56789012",
-      "Nombre": "Ducatti",
-      "Localidad": "Italia",
-      "Telefono": "333777999"
+      "cif": "D56789012",
+      "nombre": "Ducatti",
+      "localidad": "Italia",
+      "telefono": "333777999"
     },
     {
-      "CIF": "E34567890",
-      "Nombre": "Aprilia",
-      "Localidad": "España",
-      "Telefono": "111222333"
+      "cif": "E34567890",
+      "nombre": "Aprilia",
+      "localidad": "España",
+      "telefono": "111222333"
     }
   ]
   

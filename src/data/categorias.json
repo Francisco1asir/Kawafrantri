@@ -1,28 +1,28 @@
 [
     {
-      "CatID": "C001",
-      "Nombre": "R",
-      "Desc": "Moto deportiva."
+      "catid": "C001",
+      "nombre": "R",
+      "desc": "Moto deportiva."
     },
     {
-      "CatID": "C002",
-      "Nombre": "Nacked",
-      "Desc": "Moto deportiva con un estilo de calle."
+      "catid": "C002",
+      "nombre": "Nacked",
+      "desc": "Moto deportiva con un estilo de calle."
     },
     {
-      "CatID": "C003",
-      "Nombre": "Trail",
-      "Desc": "Moto versátil cómoda tanto para campo como para carretera."
+      "catid": "C003",
+      "nombre": "Trail",
+      "desc": "Moto versátil cómoda tanto para campo como para carretera."
     },
     {
-      "CatID": "C004",
-      "Nombre": "Custom",
-      "Desc": "Moto de carretera cómoda con estilo motero."
+      "catid": "C004",
+      "nombre": "Custom",
+      "desc": "Moto de carretera cómoda con estilo motero."
     },
     {
-      "CatID": "C005",
-      "Nombre": "Enduro",
-      "Desc": "Moto de campo."
+      "catid": "C005",
+      "nombre": "Enduro",
+      "desc": "Moto de campo."
     }
   ]
   
