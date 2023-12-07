@@ -9,10 +9,11 @@ export class ProveedoresController {
 
   @Post()
   create(@Body() createProveedoreDto: CreateProveedoreDto) {
+    console.log('proveedor creado')
     return this.proveedoresService.create(createProveedoreDto);
   }
 
-  @Get()
+  @Get('listar')
   findAll() {
     return this.proveedoresService.findAll();
   }
