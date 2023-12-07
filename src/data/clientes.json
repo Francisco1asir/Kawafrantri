@@ -1,0 +1,38 @@
+[
+    {
+      "dni": "12345678A",
+      "nombre": "Juan Pérez",
+      "fnac": "1990-05-15",
+      "localidad": "Cadiz",
+      "telefono": 555123456
+    },
+    {
+      "dni": "98765432B",
+      "nombre": "Ana Gómez",
+      "fnac": "1985-10-22",
+      "localidad": "Sevilla",
+      "telefono": 555987654
+    },
+    {
+      "dni": "45678901C",
+      "nombre": "Luis Rodríguez",
+      "fnac": "1988-03-08",
+      "localidad": "Granada",
+      "telefono": 555111222
+    },
+    {
+      "dni": "78901234D",
+      "nombre": "María López",
+      "fnac": "1992-12-01",
+      "localidad": "Huelva",
+      "telefono": 555333444
+    },
+    {
+      "dni": "56789012E",
+      "nombre": "Laura Martínez",
+      "fnac": "1995-06-25",
+      "localidad": "Almeria",
+      "telefono": 555666777
+    }
+  ]
+  

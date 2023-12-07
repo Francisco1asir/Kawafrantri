@@ -1,0 +1,42 @@
+[
+    {
+        "matricula": "1234ABC",
+        "marca": "Honda",
+        "modelo": "CBR500R",
+        "cilindrada": 500,
+        "peso": 192,
+        "precio": 7000
+    },
+    {
+        "matricula": "5678XYZ",
+        "marca": "Yamaha",
+        "modelo": "MT-07",
+        "cilindrada": 689,
+        "peso": 182,
+        "precio": 8000
+    },
+    {
+        "matricula": "9876MNO",
+        "marca": "Kawasaki",
+        "modelo": "Ninja 650",
+        "cilindrada": 649,
+        "peso": 196,
+        "precio": 7500
+    },
+    {
+        "matricula": "4321DEF",
+        "marca": "Suzuki",
+        "modelo": "GSX-R750",
+        "cilindrada": 750,
+        "peso": 187,
+        "precio": 9000
+    },
+    {
+        "matricula": "8765JKL",
+        "marca": "Ducati",
+        "modelo": "Monster 821",
+        "cilindrada": 821,
+        "peso": 206,
+        "precio": 12000
+    }
+]
