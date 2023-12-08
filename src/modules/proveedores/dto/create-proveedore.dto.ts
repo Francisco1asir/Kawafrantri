@@ -1,4 +1,4 @@
-import { IsString, MinLength } from "class-validator";
+import { IsNumber, IsString, MinLength } from "class-validator";
 
 export class CreateProveedoreDto {
     @IsString()
@@ -13,6 +13,6 @@ export class CreateProveedoreDto {
     @MinLength(1)
     localidad: string;
 
-    @MinLength(9)
+    @IsNumber()
     telefono: number;
 }

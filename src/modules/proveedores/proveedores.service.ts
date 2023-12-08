@@ -12,6 +12,8 @@ export class ProveedoresService {
       private readonly proveedorRepository: Repository<Proveedore>
     ) {}
 
+  // INSERTAR AUTORES
+
     async create(createProveedoreDto: CreateProveedoreDto) {
       try {
         const proveedor = this.proveedorRepository.create(createProveedoreDto);
@@ -38,6 +40,25 @@ async findAll() {
       }
     } catch (error) {
       throw new InternalServerErrorException("fallo al listar todas las categorias")
+    }
+  }
+
+  //MODIFICAR PROVEEDORES
+
+  async updateProv(cif: string, updateProveedorDto: UpdateProveedoreDto) {
+    try {
+      const proveedor = await this.proveedorRepository.findOne({
+        where: { cif }
+      })
+      this.proveedorRepository.merge(proveedor, updateProveedorDto)
+      await this.proveedorRepository.save(proveedor)
+      return {
+        message: 'proveedor actualizado',
+        data: proveedor,
+        status: 200
+      }
+    } catch (error) {
+      throw new InternalServerErrorException('fallo al actualizar proveedor')
     }
   }
 
