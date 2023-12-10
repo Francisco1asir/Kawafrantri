@@ -14,15 +14,15 @@ export class Proveedore {
     nombre: string;
 
     @Column('text',{
-        unique: true,
+        unique: false,
         nullable: true,
     })
     localidad: string;
 
     @Column({
-        unique: true,
+        unique: false,
         nullable: true,
     })
-    telefono: number;
+    telefono: string;
 
 }

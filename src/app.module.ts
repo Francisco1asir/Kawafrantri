@@ -7,6 +7,7 @@ import { CategoriasModule } from './modules/categorias/categorias.module';
 import { UsuariosModule } from './modules/usuarios/usuarios.module';
 import { ProveedoresModule } from './modules/proveedores/proveedores.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { SeedModule } from './modules/seed/seed.module';
 
 @Module({
   imports: [
@@ -24,7 +25,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     ClientesModule, 
     CategoriasModule, 
     UsuariosModule, 
-    ProveedoresModule
+    ProveedoresModule, SeedModule
   ],
   controllers: [AppController],
   providers: [AppService],
