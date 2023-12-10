@@ -14,5 +14,5 @@ export class CreateProveedoreDto {
     localidad: string;
 
     @IsNumber()
-    telefono: number;
+    telefono: string;
 }
