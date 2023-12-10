@@ -19,7 +19,7 @@ export class SeedService {
   }
 
   private async insertNewAutores() {
-      // await this.proveedoreService.deleteAllAutores();
+      // await this.proveedoreService.deleteAllProveedore();
       const insertPromisesProveedore = seedProveedore.map(async (proveedor: Proveedore) => {
         return await this.proveedoreService.create(proveedor);
       });

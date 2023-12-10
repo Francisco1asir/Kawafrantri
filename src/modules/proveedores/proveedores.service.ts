@@ -17,7 +17,7 @@ export class ProveedoresService {
     private readonly proveedorRepository: Repository<Proveedore>
   ) { }
 
-  // INSERTAR AUTORES
+  // INSERTAR PROVEEDORES
 
   async create(createProveedoreDto: CreateProveedoreDto) {
     try {
@@ -110,8 +110,8 @@ export class ProveedoresService {
   }
 
   // BORRAR TODOS LOS PROVEEDORES
-  async deleteAllAutores() {
-    const query = this.proveedorRepository.createQueryBuilder('autor');
+  async deleteAllProveedore() {
+    const query = this.proveedorRepository.createQueryBuilder('proveedor');
     try {
       return await query
         .delete()
