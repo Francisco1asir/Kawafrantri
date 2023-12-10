@@ -2,7 +2,7 @@ import { IsNumber, IsString, MinLength } from "class-validator";
 
 export class CreateProveedoreDto {
     @IsString()
-    @MinLength(1)
+    @MinLength(2)
     cif: string;
 
     @IsString()
