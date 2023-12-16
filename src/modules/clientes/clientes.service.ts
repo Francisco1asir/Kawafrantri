@@ -9,6 +9,12 @@ import { Cliente } from './entities/cliente.entity';
 
 @Injectable()
 export class ClientesService {
+  deleteAllUsuarios() {
+    throw new Error('Method not implemented.');
+  }
+  deleteAllCategorias() {
+    throw new Error('Method not implemented.');
+  }
   constructor(
     @InjectRepository(Cliente) // Reemplaza 'Cliente' con el nombre real de tu entidad
     private readonly clienteRepository: Repository<Cliente>,
@@ -106,8 +112,8 @@ export class ClientesService {
 
 
 
-  // BORRAR TODOS LOS PROVEEDORES
-  async deleteAllProveedore() {
+  // BORRAR TODOS LOS CLIENTES
+  async deleteAllClientes() {
     const query = this.clienteRepository.createQueryBuilder('cliente');
     try {
       return await query

@@ -11,12 +11,6 @@ export class Usuario {
         unique: true,
         nullable: true,
     })
-    dniuser?: string;
-
-    @Column('text',{
-        unique: true,
-        nullable: true,
-    })
     nombre: string;
 
     @Column('text',{

@@ -8,11 +8,6 @@ export class CreateUsuarioDto {
 
     @IsString()
     @MinLength(1)
-    @IsOptional()
-    dniuser?: string;
-
-    @IsString()
-    @MinLength(1)
     nombre: string;
 
     @IsString()

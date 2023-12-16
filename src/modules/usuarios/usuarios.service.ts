@@ -18,7 +18,7 @@ export class UsuariosService {
     private readonly usuarioRepository: Repository<Usuario>
   ) { }
 
-  // INSERTAR PROVEEDORES
+  // INSERTAR USUARIOS
 
   async create(createUsuarioDto: CreateUsuarioDto) {
     try {
@@ -35,7 +35,7 @@ export class UsuariosService {
   }
 
 
-  // LISTAR TODOS LOS PROVEEDORES
+  // LISTAR TODOS LOS USUARIOS
 
   async findAll() {
     try {
@@ -46,13 +46,13 @@ export class UsuariosService {
         status: 200
       }
     } catch (error) {
-      throw new InternalServerErrorException("fallo al listar todos los proveedores")
+      throw new InternalServerErrorException("fallo al listar todos los usuarioes")
     }
   }
 
 
 
-  //  LISTAR UN PROVEEDOR
+  //  LISTAR UN USUARIO
 
   async ListarUno(userid: string) {
     try {
@@ -85,13 +85,13 @@ export class UsuariosService {
         status: 200
       }
     } catch (error) {
-      throw new InternalServerErrorException('fallo al actualizar proveedor')
+      throw new InternalServerErrorException('fallo al actualizar usuario')
     }
   }
 
 
 
-  // BORRAR PROVEEDOR
+  // BORRAR USUARIO
 
   async remove(userid: string) {
     try {
@@ -117,7 +117,7 @@ export class UsuariosService {
   }
 
 
-  // BORRAR TODOS LOS PROVEEDORES
+  // BORRAR TODOS LOS USUARIOS
   async deleteAllUsuarios() {
     const query = this.usuarioRepository.createQueryBuilder('usuario');
     try {
