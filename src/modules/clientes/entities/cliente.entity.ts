@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Moto } from "src/modules/motos/entities/moto.entity";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Cliente {
@@ -32,4 +33,9 @@ export class Cliente {
     })
     telefono: string;
 
+    @OneToMany(
+        () => Moto,
+        (fkvirtu1) => fkvirtu1.dni_propietario
+    )
+    virtu1?: Moto[] //virtual
 }

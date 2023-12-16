@@ -1,4 +1,6 @@
 import { IsNumber, IsOptional, IsString, MinLength  } from "class-validator";
+import { Categoria } from "src/modules/categorias/entities/categoria.entity";
+import { Cliente } from "src/modules/clientes/entities/cliente.entity";
 
 export class CreateMotoDto {
     @IsString()
@@ -24,9 +26,9 @@ export class CreateMotoDto {
 
     @IsString()
     @IsOptional()
-    dni_propietario?: string;
+    dni_propietario?: Cliente;
 
     @IsString()
     @IsOptional()
-    catid?: string;
+    catid?: Categoria;
 }

@@ -10,9 +10,18 @@ import { Cliente } from './entities/cliente.entity';
 @Injectable()
 export class ClientesService {
   constructor(
-    @InjectRepository(Cliente) // Reemplaza 'Cliente' con el nombre real de tu entidad
+    @InjectRepository(Cliente)
     private readonly clienteRepository: Repository<Cliente>,
   ) {}
+
+  findOne(dni:string) {
+    const proved = this.clienteRepository.findOne({
+      where:{
+        dni
+      }
+    })
+    return proved;
+  }
 
   async create(createClienteDto: CreateClienteDto) {
     try {
@@ -106,8 +115,8 @@ export class ClientesService {
 
 
 
-  // BORRAR TODOS LOS PROVEEDORES
-  async deleteAllProveedore() {
+  // BORRAR TODOS LOS CLIENTES
+  async deleteAllClientes() {
     const query = this.clienteRepository.createQueryBuilder('cliente');
     try {
       return await query
@@ -120,13 +129,7 @@ export class ClientesService {
   }
 
 
-  findOne(id: number) {
-    return `This action returns a #${id} cliente`;
-  }
 
-  update(id: number, updateClienteDto: UpdateClienteDto) {
-    return `This action updates a #${id} cliente`;
-  }
 
 
 }

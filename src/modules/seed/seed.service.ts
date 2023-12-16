@@ -21,9 +21,12 @@ export class SeedService {
 
   public async loadData() {
     try {
-      await this.insertNewProveedores();
-      await this.insertNewMotos();
-      await this.insertNewClientes();
+      this.clientesService.deleteAllClientes();
+      this.proveedoreService.deleteAllProveedore();
+      this.motosService.deleteAllMotos();
+      this.insertNewProveedores();
+      this.insertNewClientes();
+      // await this.insertNewMotos();
       return ('Seed ejecutado correctamente')
     } catch (error) {
       return ('Seed ejecutado mal pero mal')
@@ -31,23 +34,23 @@ export class SeedService {
   }
 
   private async insertNewProveedores() {
-      // await this.proveedoreService.deleteAllProveedore();
+      await this.proveedoreService.deleteAllProveedore();
       const insertPromisesProveedore = seedProveedore.map(async (proveedor: Proveedore) => {
         return await this.proveedoreService.create(proveedor);
       });
       await Promise.all(insertPromisesProveedore);
   }
 
-  private async insertNewMotos() {
-    // await this.proveedoreService.deleteAllMotos();
-    const insertPromisesMoto = seedMoto.map(async (moto: Moto) => {
-      return await this.motosService.create(moto);
-    });
-    await Promise.all(insertPromisesMoto);
-}
+//   private async insertNewMotos() {
+//     await this.motosService.deleteAllMotos();
+//     const insertPromisesMoto = seedMoto.map(async (moto: Moto) => {
+//       return await this.motosService.create(moto);
+//     });
+//     await Promise.all(insertPromisesMoto);
+// }
 
   private async insertNewClientes() {
-    // await this.clientesService.deleteAllClientes();
+    await this.clientesService.deleteAllClientes();
     const insertPromisesCliente = seedCliente.map(async (cliente: Cliente) => {
       return await this.clientesService.create(cliente);
     });

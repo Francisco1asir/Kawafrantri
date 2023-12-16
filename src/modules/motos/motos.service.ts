@@ -4,32 +4,62 @@ import { UpdateMotoDto } from './dto/update-moto.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Moto } from './entities/moto.entity';
 import { Repository } from 'typeorm';
+import { ClientesService } from '../clientes/clientes.service';
+import { CategoriasService } from '../categorias/categorias.service';
 
 @Injectable()
 export class MotosService {
-  findOneBy(matricula: string) {
+  newmoto(createMotoDto: CreateMotoDto): any {
     throw new Error('Method not implemented.');
   }
+  createBatch(motosToInsert: Moto[]) {
+    throw new Error('Method not implemented.');
+  }
+
   constructor(
     @InjectRepository(Moto)
-    private readonly motoRepository: Repository<Moto>
-  ) { }
-
-  // INSERTAR PROVEEDORES
+    private readonly motoRepository: Repository<Moto>,
+    private clienteService:ClientesService,
+    private categoriasService:CategoriasService
+  ) {}
 
   async create(createMotoDto: CreateMotoDto) {
     try {
-      const moto = this.motoRepository.create(createMotoDto);
-      await this.motoRepository.save(moto);
+      const { dni_propietario, catid, ...campos } = createMotoDto;
+      const cate = this.motoRepository.create({ ...campos });
+      const proveobj = await this.clienteService.findOne(dni_propietario.dni); 
+      const proveobj2 = await this.categoriasService.findOne(catid.virtu2); 
+      cate.dni_propietario = proveobj;
+      cate.catid = proveobj;
+  
+      await this.motoRepository.save(cate);
       return {
-        msg: 'Registro insertado',
-        data: moto,
         status: 200,
+        msg: 'Registro insertado'
       };
     } catch (error) {
-      throw new InternalServerErrorException('Ponte en contacto con el admin');
+      console.log(error);
+      throw new InternalServerErrorException('sysadmin...');
     }
   }
+  
+
+  // INSERTAR PROVEEDORES
+
+  // async create(createMotoDto: CreateMotoDto) {
+  //   try {
+  //     const moto = this.motoRepository.create(createMotoDto);
+  //     await this.motoRepository.save(moto);
+  //     return {
+  //       msg: 'Registro insertado',
+  //       data: moto,
+  //       status: 200,
+  //     };
+  //   } catch (error) {
+  //     throw new InternalServerErrorException('Ponte en contacto con el admin');
+  //   }
+  // }
+
 
   // LISTAR TODOS LOS PROVEEDORES
 
@@ -68,14 +98,14 @@ export class MotosService {
 
   async UpdateProveedor(matricula: string, updateMotoDto: UpdateMotoDto) {
     try {
-      const moto = await this.motoRepository.findOne({
+      const moto2 = await this.motoRepository.findOne({
         where: { matricula }
       })
-      this.motoRepository.merge(moto, updateMotoDto)
-      await this.motoRepository.save(moto)
+      this.motoRepository.merge(moto2, updateMotoDto)
+      await this.motoRepository.save(moto2)
       return {
         message: 'moto actualizada',
-        data: moto,
+        data: moto2,
         status: 200
       }
     } catch (error) {

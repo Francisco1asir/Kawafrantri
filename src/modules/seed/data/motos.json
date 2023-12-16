@@ -5,7 +5,8 @@
         "modelo": "CBR500R",
         "cilindrada": 500,
         "peso": 192,
-        "precio": 7000
+        "precio": 7000,
+        "dni_propietario": "56789012E"
     },
     {
         "matricula": "5678XYZ",

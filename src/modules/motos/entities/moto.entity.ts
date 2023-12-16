@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Categoria } from "src/modules/categorias/entities/categoria.entity";
+import { Cliente } from "src/modules/clientes/entities/cliente.entity";
+import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Moto {
@@ -37,16 +39,18 @@ export class Moto {
     })
     precio: number;
 
-    @Column({
-        unique: false,
-        nullable: true,
-    })
-    dni_propietario?: string;
+    @ManyToOne(
+        () => Cliente,
+        (fkmotos1) => fkmotos1.dni,
+        {cascade:true}
+    )
+    dni_propietario?: Cliente;
 
-    @Column({
-        unique: false,
-        nullable: true,
-    })
-    catid?: string;
+    @ManyToOne(
+        () => Categoria,
+        (fkmotos2) => fkmotos2.virtu2,
+        {cascade:true}
+    )
+    catid?: Categoria;
 }
 

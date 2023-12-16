@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Moto } from "src/modules/motos/entities/moto.entity";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Categoria {
@@ -14,9 +15,9 @@ export class Categoria {
     })
     nombre: string;
 
-    @Column('text',{
-        unique: false,
-        nullable: true,
-    })
-    desc: string;
+    @OneToMany(
+        () => Moto,
+        (fkvirtu2) => fkvirtu2.catid
+    )
+    virtu2?: Moto[] //virtual
 }
