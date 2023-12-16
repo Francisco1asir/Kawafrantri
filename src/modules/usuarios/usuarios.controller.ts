@@ -1,34 +1,50 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { UsuariosService } from './usuarios.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
+import { PaginationDTO } from './dto/pagination.dto';
 
 @Controller('usuarios')
 export class UsuariosController {
   constructor(private readonly usuariosService: UsuariosService) {}
 
+  // INSERTAR
   @Post()
   create(@Body() createUsuarioDto: CreateUsuarioDto) {
+    console.log('usuario creado')
     return this.usuariosService.create(createUsuarioDto);
   }
 
-  @Get()
+  // LISTAR TODOS
+  @Get('listar')
   findAll() {
     return this.usuariosService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usuariosService.findOne(+id);
+  // LISTAR UNO
+  @Get(':userid')
+  ListarUno(@Param('userid') userid: string) {
+    return this.usuariosService.ListarUno(userid);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUsuarioDto: UpdateUsuarioDto) {
-    return this.usuariosService.update(+id, updateUsuarioDto);
+  // MODIFICAR
+  @Patch(':userid')
+  update(@Param('userid') userid: string, @Body() updateUsuarioDto: UpdateUsuarioDto) {
+    return this.usuariosService.UpdateUsuario(userid, updateUsuarioDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usuariosService.remove(+id);
+  // BORRAR
+  @Delete(':userid')
+  remove(@Param('cuseridif') userid: string) {
+    return this.usuariosService.remove(userid);
   }
+
+
+  // PAGINACIÓN
+  @Get()									
+  Paginat(@Query() paginationDto: PaginationDTO) {
+      console.log(paginationDto);
+      return this.usuariosService.Paginat(paginationDto);
+  }
+  
 }

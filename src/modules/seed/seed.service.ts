@@ -6,27 +6,32 @@ import { Proveedore } from '../proveedores/entities/proveedore.entity';
 import * as seedProveedore from './data/proveedores.json'
 import * as seedMoto from './data/motos.json'
 import * as seedCliente from './data/clientes.json'
+import * as seedUsuario from './data/usuarios.json'
+import * as seedCategoria from './data/categorias.json'
 import { MotosService } from '../motos/motos.service';
 import { Moto } from '../motos/entities/moto.entity';
 import { ClientesService } from '../clientes/clientes.service';
 import { Cliente } from '../clientes/entities/cliente.entity';
+import { UsuariosService } from '../usuarios/usuarios.service';
+import { Usuario } from '../usuarios/entities/usuario.entity';
+import { CategoriasService } from '../categorias/categorias.service';
+import { Categoria } from '../categorias/entities/categoria.entity';
 
 @Injectable()
 export class SeedService {
   constructor(
     private readonly proveedoreService: ProveedoresService,
     private readonly motosService: MotosService,
-    private readonly clientesService: ClientesService
+    private readonly clientesService: ClientesService,
+    private readonly usuariosService: UsuariosService,
+    private readonly categoriasService: CategoriasService
     ) {}
 
   public async loadData() {
     try {
-      this.clientesService.deleteAllClientes();
-      this.proveedoreService.deleteAllProveedore();
-      this.motosService.deleteAllMotos();
-      this.insertNewProveedores();
-      this.insertNewClientes();
-      // await this.insertNewMotos();
+      await this.insertNewProveedores();
+      await this.insertNewMotos();
+      await this.insertNewClientes();
       return ('Seed ejecutado correctamente')
     } catch (error) {
       return ('Seed ejecutado mal pero mal')
@@ -55,6 +60,22 @@ export class SeedService {
       return await this.clientesService.create(cliente);
     });
     await Promise.all(insertPromisesCliente);
+  }
+
+  private async insertNewUsuarios() {
+    // await this.clientesService.deleteAllUsuarios();
+    const insertPromisesUsuario = seedUsuario.map(async (usuario: Usuario) => {
+      return await this.usuariosService.create(usuario);
+    });
+    await Promise.all(insertPromisesUsuario);
+  }
+
+  private async insertNewCategorias() {
+    // await this.clientesService.deleteAllCategorias();
+    const insertPromisesCategorias = seedCategoria.map(async (categoria: Categoria) => {
+      return await this.categoriasService.create(categoria);
+    });
+    await Promise.all(insertPromisesCategorias);
   }
 }
 
