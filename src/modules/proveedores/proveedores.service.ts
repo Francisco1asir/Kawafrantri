@@ -44,7 +44,7 @@ export class ProveedoresService {
         status: 200
       }
     } catch (error) {
-      throw new InternalServerErrorException("fallo al listar todas las categorias")
+      throw new InternalServerErrorException("fallo al listar todos los proveedores")
     }
   }
 

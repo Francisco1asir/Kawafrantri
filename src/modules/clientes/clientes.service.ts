@@ -21,7 +21,7 @@ export class ClientesService {
         where: { dni }
       })
       return {
-        message: "detalles del proveedor",
+        message: "detalles del cliente",
         data: proveedor,
         status: 200
       }
@@ -30,7 +30,7 @@ export class ClientesService {
     }
   }
 
-  // INSERTAR PROVEEDORES
+  // INSERTAR CLIENTES
 
   async create(createProveedoreDto: CreateClienteDto) {
     try {
