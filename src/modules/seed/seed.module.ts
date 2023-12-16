@@ -8,6 +8,6 @@ import { MotosModule } from '../motos/motos.module';
 @Module({
   controllers: [SeedController],
   providers: [SeedService],
-  imports: [ProveedoresModule,MotosModule]
+  imports: [ProveedoresModule,MotosModule,ClientesModule]
 })
 export class SeedModule {}

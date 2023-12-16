@@ -31,13 +31,13 @@ export class ClientesController {
   // MODIFICAR
   @Patch(':dni')
   update(@Param('dni') dni: string, @Body() updateClienteDto: UpdateClienteDto) {
-    return this.clientesService.UpdateProveedor(+dni, updateClienteDto);
+    return this.clientesService.UpdateCliente(dni, updateClienteDto);
   }
 
   // BORRAR
   @Delete(':dni')
   remove(@Param('dni') dni: string) {
-    return this.clientesService.remove(+dni);
+    return this.clientesService.remove(dni);
   }
 
   // PAGINACIÓN
