@@ -40,7 +40,7 @@ export class ProveedoresService {
       const catData = await this.proveedorRepository.find()
       return {
         data: catData,
-        message: 'listado de todas las categorias',
+        message: 'listado de todos los proveedores',
         status: 200
       }
     } catch (error) {

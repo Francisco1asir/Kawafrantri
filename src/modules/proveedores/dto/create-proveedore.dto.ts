@@ -13,6 +13,6 @@ export class CreateProveedoreDto {
     @MinLength(1)
     localidad: string;
 
-    @IsNumber()
+    @IsString()
     telefono: string;
 }
