@@ -30,8 +30,9 @@ export class SeedService {
   public async loadData() {
     try {
       await this.insertNewProveedores();
-      await this.insertNewMotos();
+      // await this.insertNewMotos();
       await this.insertNewClientes();
+      await this.insertNewCategorias();
       return ('Seed ejecutado correctamente')
     } catch (error) {
       return ('Seed ejecutado mal pero mal')
