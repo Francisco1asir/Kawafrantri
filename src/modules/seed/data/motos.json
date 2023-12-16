@@ -14,7 +14,9 @@
         "modelo": "MT-07",
         "cilindrada": 689,
         "peso": 182,
-        "precio": 8000
+        "precio": 8000,
+        "dni_propietario": "56789012E",
+        "catid": "C003"
     },
     {
         "matricula": "9876MNO",

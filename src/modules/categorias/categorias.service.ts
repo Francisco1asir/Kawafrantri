@@ -13,6 +13,17 @@ export class CategoriasService {
   findOneBy(cif: string) {
     throw new Error('Method not implemented.');
   }
+
+  findOne(catid:string) {
+    const proved = this.categoriaRepository.findOne({
+      where:{
+        catid
+      }
+    })
+    return proved;
+  }
+
+
   constructor(
     @InjectRepository(Categoria)
     private readonly categoriaRepository: Repository<Categoria>

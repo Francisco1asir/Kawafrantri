@@ -15,6 +15,12 @@ export class Categoria {
     })
     nombre: string;
 
+    @Column('text',{
+        unique: true,
+        nullable: true,
+    })
+    desc: string;
+
     @OneToMany(
         () => Moto,
         (fkvirtu2) => fkvirtu2.catid

@@ -9,13 +9,6 @@ import { CategoriasService } from '../categorias/categorias.service';
 
 @Injectable()
 export class MotosService {
-  newmoto(createMotoDto: CreateMotoDto): any {
-    throw new Error('Method not implemented.');
-  }
-  createBatch(motosToInsert: Moto[]) {
-    throw new Error('Method not implemented.');
-  }
-
   constructor(
     @InjectRepository(Moto)
     private readonly motoRepository: Repository<Moto>,
@@ -23,22 +16,23 @@ export class MotosService {
     private categoriasService:CategoriasService
   ) {}
 
-  async create(createMotoDto: CreateMotoDto) {
-    try {
-      const { dni_propietario, catid, ...campos } = createMotoDto;
+  async create(createMotoDto:CreateMotoDto) {
+    try{
+      const { dni_propietario, catid, ...campos } = createMotoDto;        
       const cate = this.motoRepository.create({ ...campos });
       const proveobj = await this.clienteService.findOne(dni_propietario.dni); 
-      const proveobj2 = await this.categoriasService.findOne(catid.virtu2); 
+      const proveobj2 = await this.categoriasService.findOne(catid.catid); 
       cate.dni_propietario = proveobj;
-      cate.catid = proveobj;
+      cate.catid = proveobj2;
   
-      await this.motoRepository.save(cate);
+    await this.motoRepository.save(cate)
+  
       return {
         status: 200,
         msg: 'Registro insertado'
-      };
-    } catch (error) {
-      console.log(error);
+      }
+    }catch(error){
+      console.log(error)
       throw new InternalServerErrorException('sysadmin...');
     }
   }
