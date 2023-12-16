@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { MotosService } from './motos.service';
 import { CreateMotoDto } from './dto/create-moto.dto';
 import { UpdateMotoDto } from './dto/update-moto.dto';
@@ -7,28 +7,33 @@ import { UpdateMotoDto } from './dto/update-moto.dto';
 export class MotosController {
   constructor(private readonly motosService: MotosService) {}
 
+  // INSERTAR
   @Post()
   create(@Body() createMotoDto: CreateMotoDto) {
+    console.log('moto creada')
     return this.motosService.create(createMotoDto);
   }
-
-  @Get()
+  // LISTAR TODOS
+  @Get('listar')
   findAll() {
     return this.motosService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.motosService.findOne(+id);
+  // LISTAR UNO
+  @Get(':matricula')
+  ListarUno(@Param('matricula') matricula: string) {
+    return this.motosService.ListarUno(matricula);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMotoDto: UpdateMotoDto) {
-    return this.motosService.update(+id, updateMotoDto);
+  // MODIFICAR
+  @Patch(':matricula')
+  update(@Param('matricula') matricula: string, @Body() updateProveedorDto: UpdateMotoDto) {
+    return this.motosService.UpdateProveedor(matricula, updateProveedorDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.motosService.remove(+id);
+  // BORRAR
+  @Delete(':matricula')
+  remove(@Param('matricula') matricula: string) {
+    return this.motosService.remove(matricula);
   }
 }
