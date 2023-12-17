@@ -120,7 +120,6 @@ export class CategoriasService {
         .where({})
         .execute()
     } catch (error) {
-      throw new InternalServerErrorException('Ponte en contacto con el administrador ...')
     }
   }
 }

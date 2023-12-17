@@ -19,22 +19,12 @@ export class MotosService {
   async create(createMotoDto: CreateMotoDto) {
     try {
       const { dni_propietario, catid, ...campos } = createMotoDto;
-  
       const cate = this.motoRepository.create({ ...campos });
-  
-      // Utiliza el campo dni_propietario directamente si es un string
-      const propietarioId = dni_propietario; // Asegúrate de que dni_propietario sea un string
-  
-      // Utiliza el campo catid directamente si es un string
+      const propietarioId = dni_propietario; 
       const categoriaId = catid; // Asegúrate de que catid sea un string
-  
-      // Buscar el propietario por su ID
       const propietario = await this.clienteService.findOne(propietarioId);
-  
-      // Buscar la categoría por su ID
       const categoria = await this.categoriasService.findOne(categoriaId);
   
-      // Asignar el propietario y la categoría a la moto
       cate.dni_propietario = propietario;
       cate.catid = categoria;
   
@@ -50,27 +40,6 @@ export class MotosService {
     }
   }
   
-  
-
-  
-
-  // INSERTAR PROVEEDORES
-
-  // async create(createMotoDto: CreateMotoDto) {
-  //   try {
-  //     const moto = this.motoRepository.create(createMotoDto);
-  //     await this.motoRepository.save(moto);
-  //     return {
-  //       msg: 'Registro insertado',
-  //       data: moto,
-  //       status: 200,
-  //     };
-  //   } catch (error) {
-  //     throw new InternalServerErrorException('Ponte en contacto con el admin');
-  //   }
-  // }
-
-
   // LISTAR TODOS LOS PROVEEDORES
 
   async findAll() {
