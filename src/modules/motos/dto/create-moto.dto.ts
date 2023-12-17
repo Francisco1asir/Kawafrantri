@@ -1,34 +1,32 @@
-import { IsNumber, IsOptional, IsString, MinLength  } from "class-validator";
-import { Categoria } from "src/modules/categorias/entities/categoria.entity";
-import { Cliente } from "src/modules/clientes/entities/cliente.entity";
+import { IsNumber, IsOptional, IsString, MinLength } from 'class-validator';
 
 export class CreateMotoDto {
-    @IsString()
-    @MinLength(2)
-    matricula: string;
+  @IsString()
+  @MinLength(2)
+  matricula: string;
 
-    @IsString()
-    @MinLength(1)
-    marca: string;
+  @IsString()
+  @MinLength(1)
+  marca: string;
 
-    @IsString()
-    @MinLength(1)
-    modelo: string;
+  @IsString()
+  @MinLength(1)
+  modelo: string;
 
-    @IsNumber()
-    cilindrada: number;
-    
-    @IsNumber()
-    peso: number;
+  @IsNumber()
+  cilindrada: number;
 
-    @IsNumber()
-    precio: number;
+  @IsNumber()
+  peso: number;
 
-    @IsString()
-    @IsOptional()
-    dni_propietario?: Cliente;
+  @IsNumber()
+  precio: number;
 
-    @IsString()
-    @IsOptional()
-    catid?: Categoria;
+  @IsString() // Cambiado de Cliente a string
+  @IsOptional()
+  dni_propietario?: string; // Cambiado de Cliente a string
+
+  @IsString() // Cambiado de Categoria a string
+  @IsOptional()
+  catid?: string; // Cambiado de Categoria a string
 }

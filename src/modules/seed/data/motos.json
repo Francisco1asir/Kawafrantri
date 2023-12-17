@@ -6,7 +6,8 @@
         "cilindrada": 500,
         "peso": 192,
         "precio": 7000,
-        "dni_propietario": "56789012E"
+        "dni_propietario": "56789012E",
+        "catid": "C001"
     },
     {
         "matricula": "5678XYZ",
@@ -24,7 +25,9 @@
         "modelo": "Ninja 650",
         "cilindrada": 649,
         "peso": 196,
-        "precio": 7500
+        "precio": 7500,
+        "dni_propietario": "56789012E",
+        "catid": "C003"
     },
     {
         "matricula": "4321DEF",
@@ -32,7 +35,9 @@
         "modelo": "GSX-R750",
         "cilindrada": 750,
         "peso": 187,
-        "precio": 9000
+        "precio": 9000,
+        "dni_propietario": "45678901C",
+        "catid": "C005"
     },
     {
         "matricula": "8765JKL",
@@ -40,6 +45,8 @@
         "modelo": "Monster 821",
         "cilindrada": 821,
         "peso": 206,
-        "precio": 12000
+        "precio": 12000,
+        "dni_propietario": "98765432B",
+        "catid": "C002"
     }
 ]

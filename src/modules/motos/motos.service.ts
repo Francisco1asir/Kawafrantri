@@ -3,7 +3,7 @@ import { CreateMotoDto } from './dto/create-moto.dto';
 import { UpdateMotoDto } from './dto/update-moto.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Moto } from './entities/moto.entity';
-import { Repository } from 'typeorm';
+import { DeepPartial, Repository } from 'typeorm';
 import { ClientesService } from '../clientes/clientes.service';
 import { CategoriasService } from '../categorias/categorias.service';
 
@@ -16,26 +16,42 @@ export class MotosService {
     private categoriasService:CategoriasService
   ) {}
 
-  async create(createMotoDto:CreateMotoDto) {
-    try{
-      const { dni_propietario, catid, ...campos } = createMotoDto;        
-      const cate = this.motoRepository.create({ ...campos });
-      const proveobj = await this.clienteService.findOne(dni_propietario.dni); 
-      const proveobj2 = await this.categoriasService.findOne(catid.catid); 
-      cate.dni_propietario = proveobj;
-      cate.catid = proveobj2;
+  async create(createMotoDto: CreateMotoDto) {
+    try {
+      const { dni_propietario, catid, ...campos } = createMotoDto;
   
-    await this.motoRepository.save(cate)
+      const cate = this.motoRepository.create({ ...campos });
+  
+      // Utiliza el campo dni_propietario directamente si es un string
+      const propietarioId = dni_propietario; // Asegúrate de que dni_propietario sea un string
+  
+      // Utiliza el campo catid directamente si es un string
+      const categoriaId = catid; // Asegúrate de que catid sea un string
+  
+      // Buscar el propietario por su ID
+      const propietario = await this.clienteService.findOne(propietarioId);
+  
+      // Buscar la categoría por su ID
+      const categoria = await this.categoriasService.findOne(categoriaId);
+  
+      // Asignar el propietario y la categoría a la moto
+      cate.dni_propietario = propietario;
+      cate.catid = categoria;
+  
+      await this.motoRepository.save(cate);
   
       return {
         status: 200,
         msg: 'Registro insertado'
-      }
-    }catch(error){
-      console.log(error)
+      };
+    } catch (error) {
+      console.log(error);
       throw new InternalServerErrorException('sysadmin...');
     }
   }
+  
+  
+
   
 
   // INSERTAR PROVEEDORES
@@ -94,18 +110,40 @@ export class MotosService {
     try {
       const moto2 = await this.motoRepository.findOne({
         where: { matricula }
-      })
-      this.motoRepository.merge(moto2, updateMotoDto)
-      await this.motoRepository.save(moto2)
+      });
+  
+      const { dni_propietario, catid, ...rest } = updateMotoDto;
+  
+      const partialMoto: DeepPartial<Moto> = { ...rest };
+  
+      if (dni_propietario) {
+        const cliente = await this.clienteService.findOne(dni_propietario);
+        if (cliente) {
+          partialMoto.dni_propietario = cliente;
+        }
+      }
+  
+      if (catid) {
+        const categoria = await this.categoriasService.findOne(catid);
+        if (categoria) {
+          partialMoto.catid = categoria;
+        }
+      }
+  
+      this.motoRepository.merge(moto2, partialMoto);
+      await this.motoRepository.save(moto2);
+  
       return {
         message: 'moto actualizada',
         data: moto2,
         status: 200
-      }
+      };
     } catch (error) {
-      throw new InternalServerErrorException('fallo al actualizar proveedor')
+      throw new InternalServerErrorException('fallo al actualizar proveedor');
     }
   }
+  
+  
 
   // BORRAR PROVEEDOR
 

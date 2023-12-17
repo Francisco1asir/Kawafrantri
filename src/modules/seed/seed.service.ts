@@ -25,10 +25,10 @@ export class SeedService {
 
   public async loadData() {
     try {
-      // this.proveedoreService.deleteAllProveedore();
-      // this.clientesService.deleteAllClientes();
-      // this.usuariosService.deleteAllUsuarios();
-      // this.categoriasService.deleteAllCategorias();
+      this.proveedoreService.deleteAllProveedore();
+      this.clientesService.deleteAllClientes();
+      this.usuariosService.deleteAllUsuarios();
+      this.categoriasService.deleteAllCategorias();
       await this.insertNewProveedores();
       await this.insertNewClientes();
       await this.insertNewCategorias();
@@ -40,7 +40,7 @@ export class SeedService {
   }
 
   private async insertNewProveedores() {
-      // await this.proveedoreService.deleteAllProveedore();
+      await this.proveedoreService.deleteAllProveedore();
       const insertPromisesProveedore = seedProveedore.map(async (proveedor: Proveedore) => {
         return await this.proveedoreService.create(proveedor);
       });
@@ -48,7 +48,7 @@ export class SeedService {
   }
 
   private async insertNewClientes() {
-  //  await this.clientesService.deleteAllClientes();
+   await this.clientesService.deleteAllClientes();
     const insertPromisesCliente = seedCliente.map(async (cliente: Cliente) => {
       return await this.clientesService.create(cliente);
     });
@@ -56,19 +56,19 @@ export class SeedService {
   }
 
   private async insertNewUsuarios() {
-   // await this.clientesService.deleteAllUsuarios();
+    await this.usuariosService.deleteAllUsuarios();
     const insertPromisesUsuario = seedUsuario.map(async (usuario: Usuario) => {
-      return await this.usuariosService.create(usuario);
+        return await this.usuariosService.create(usuario);
     });
     await Promise.all(insertPromisesUsuario);
-  }
+}
 
-  private async insertNewCategorias() {
-   // await this.clientesService.deleteAllCategorias();
+private async insertNewCategorias() {
+    await this.categoriasService.deleteAllCategorias(); 
     const insertPromisesCategorias = seedCategoria.map(async (categoria: Categoria) => {
-      return await this.categoriasService.create(categoria);
+        return await this.categoriasService.create(categoria);
     });
     await Promise.all(insertPromisesCategorias);
-  }
+}
 }
 

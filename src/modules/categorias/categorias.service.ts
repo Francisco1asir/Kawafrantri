@@ -9,21 +9,10 @@ import { PaginationDTO } from '../clientes/dto/pagination.dto';
 @Injectable()
 export class CategoriasService {
 
-
-  findOneBy(cif: string) {
-    throw new Error('Method not implemented.');
+  findOne(catid: string) {
+    return this.categoriaRepository.findOne({ where: { catid } });
   }
-
-  findOne(catid:string) {
-    const proved = this.categoriaRepository.findOne({
-      where:{
-        catid
-      }
-    })
-    return proved;
-  }
-
-
+  
   constructor(
     @InjectRepository(Categoria)
     private readonly categoriaRepository: Repository<Categoria>
