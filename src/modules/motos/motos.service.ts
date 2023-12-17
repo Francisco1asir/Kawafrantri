@@ -40,22 +40,25 @@ export class MotosService {
     }
   }
   
-  // LISTAR TODOS LOS PROVEEDORES
+  // LISTAR TODAS LAS MOTOS
 
   async findAll() {
     try {
-      const catData = await this.motoRepository.find()
+      const motos = await this.motoRepository.find({
+        relations: ['dni_propietario', 'catid'],
+      });
+
       return {
-        data: catData,
-        message: 'listado de todas las motos',
-        status: 200
-      }
+        data: motos,
+        message: 'Listado de todas las motos con relaciones cargadas',
+        status: 200,
+      };
     } catch (error) {
-      throw new InternalServerErrorException("fallo al listar todos los proveedores")
+      throw new InternalServerErrorException('Fallo al listar todas las motos con relaciones');
     }
   }
 
-  //  LISTAR UN PROVEEDOR
+  //  LISTAR UNA MOTO
 
   async ListarUno(matricula: string) {
     try {
@@ -73,7 +76,7 @@ export class MotosService {
   }
 
 
-  //  MODIFICAR PROVEEDORES
+  //  MODIFICAR MOTOS
 
   async UpdateProveedor(matricula: string, updateMotoDto: UpdateMotoDto) {
     try {
@@ -114,7 +117,7 @@ export class MotosService {
   
   
 
-  // BORRAR PROVEEDOR
+  // BORRAR MOTOS
 
   async remove(matricula: string) {
     try {
@@ -128,7 +131,7 @@ export class MotosService {
     }
   }
 
-    // BORRAR TODOS LOS PROVEEDORES
+    // BORRAR TODAS LAS MOTOS
   async deleteAllMotos() {
     const query = this.motoRepository.createQueryBuilder('moto');
     try {
