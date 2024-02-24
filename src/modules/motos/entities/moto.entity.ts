@@ -21,6 +21,12 @@ export class Moto {
     })
     modelo: string;
 
+    @Column('text',{
+        unique: false,
+        nullable: true,
+    })
+    foto: string;
+
     @Column({
         unique: false,
         nullable: true,

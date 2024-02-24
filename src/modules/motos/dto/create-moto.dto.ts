@@ -13,6 +13,10 @@ export class CreateMotoDto {
   @MinLength(1)
   modelo: string;
 
+  @IsString()
+  @MinLength(1)
+  foto: string;
+
   @IsNumber()
   cilindrada: number;
 
